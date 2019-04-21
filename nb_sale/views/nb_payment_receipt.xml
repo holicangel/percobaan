@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <template id="nb_paymentreceipt_template">
+            <t t-call="report.external_layout">
+                <t t-set="doc" t-value="docs.with_context({'lang':docs.partner_id.lang})"/>   
+                                                                         
+                    <div class="page" style="font-size:17px;">
+                   
+                    <div class="row">
+                 <table><tr> <td> <strong>No. Kwitansi</strong> </td><td width="50px"></td><td>: <span t-field="doc.no_kwitansi"/></td>
+                  </tr>
+                 <tr> <td> <strong> No. Purchase Order</strong></td><td width="50px"></td><td>: <span t-field="doc.no_po"/></td> </tr>
+                   </table> 
+                    </div>
+                        
+                        
+                        <center><h1><strong>
+                           
+                           KWITANSI
+                           
+                            <!-- <span t-field="o.number"/> -->
+                            
+                        </strong></h1></center>
+                        <br/>
+                        <br/>
+                        <br/>
+                        
+                     <div class="row"><table><tr><td>
+                    <strong><u> Terima Dari</u><br/> Received From</strong> </td><td width="50px"></td><td>: <span t-field="doc.partner_id"/></td> </tr>
+                    <tr height="50px"><td></td><td></td><td></td></tr>
+                    <tr>
+                    <td> <strong><u>Rupiah</u><br/>US $ </strong></td>
+                    <td width="50px"></td>
+                    <td>: <span t-field="doc.jumlah" /></td>
+                    </tr>
+                     <tr height="50px"><td></td><td></td><td></td></tr>
+                      <tr><td>
+                      <strong><u>Sebesar</u><br/>The Sum Of</strong></td><td width="50px">
+                      </td>
+                      <td>: <span t-field="doc.bilangan"/></td>
+                      </tr>
+                      <tr height="50px"><td></td><td></td><td></td></tr>
+                      <tr><td>
+                      <strong><u>Utk. Pembayaran</u><br/>In Payment Of</strong></td><td width="50px">
+                      </td>
+                      <td>: <span t-field="doc.untuk"/></td>
+                      </tr>
+                      <tr height="50px"><td></td><td></td><td></td></tr>
+                        <tr><td>
+                      <strong>Cheque / BG</strong></td><td width="50px">
+                      </td>
+                      <td>: PT Nusatama Berkah Bank Permata Cab Kemang Pratama Bekasi <br/> &amp;nbsp;&amp;nbsp; No. ACC : IDR &amp;nbsp; 121 648 7865  </td>
+                      </tr>
+                    </table>
+                    <br/>
+                    <br/>
+                    <strong>Note :</strong><br/> Pembayaran dianggap sah/
+                    diakui apabila Cheque/BG telah dicairkan <br/>
+                    <i>Payment valid Cheque/BG realizeable by cash</i>
+                     </div>   
+                        
+                </div>
+            </t>
+        </template>
+        <report
+            id="paymentreceipt_hardcopy"
+            model="payment.receipt.nb"
+            string="NB Payment Receipt Bahasa Indonesia"
+            name="nb_sale.nb_paymentreceipt_template"
+            file="nb_sale.nb_paymentreceipt_template"
+            report_type="qweb-pdf"
+            menu ="True"
+            paperformat="paperformat"/> 
+        />
+    </data>
+</odoo>

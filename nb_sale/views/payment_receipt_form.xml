@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="nama_model_tree">
+            <field name="name">account.invoice.tree</field>
+            <field name="model">payment.receipt.nb</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="no_kwitansi"/>
+                    <field name="no_po"/>
+                    <field name="partner_id"/>
+                    <field name="untuk"/>
+                    <field name="jumlah"/>
+                    <field name="bilangan"/>
+                </tree>
+            </field>
+        </record>
+
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="payment_receipt_form">
+            <field name="name">account.invoice.form</field>
+            <field name="model">payment.receipt.nb</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="no_kwitansi"/>
+                                <field name="no_po"/>
+                                <field name="partner_id"/>
+                                <field name="untuk"/>
+                            </group>
+                            <group>
+                                <field name="jumlah"/>
+                                <field name="bilangan"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="payment_receipt_action">
+            <field name="name">Payment Receipt</field>
+            <field name="res_model">payment.receipt.nb</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="main_payment_receipt" 
+            name="Payment Receipt" 
+            parent="account.menu_finance_receivables"
+            
+            action="payment_receipt_action" 
+        />
+
+
+    </data>
+</odoo>

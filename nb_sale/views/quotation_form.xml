@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_order_form">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="kepada" />
+                </xpath>
+                <xpath expr="//field[@name='kepada']" position="after">
+                    <field name="perihal" attrs="{'invisible': [('state', 'in', ['sale', 'done', 'cancel'])]}" />
+                </xpath>
+                <!-- <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                    <attribute name="string">Cara Bayar</attribute>
+                </xpath> -->
+                <!-- <xpath expr="//field[@name='date_order']" position="replace">
+                    <field name="tanggal_order" required="1"/>
+                </xpath> -->
+                <!-- <xpath expr="//field[@name='validity_date']" position="replace">
+                    <field name="tanggal_validasi" required="1"/>
+                </xpath> -->
+                 <!-- <xpath expr="//field[@name='confirmation_date']" position="replace">
+                     <field name="tanggal_konfirmasi" attrs="{'invisible': [('state', 'in', ['draft', 'sent', 'cancel'])]}"/>
+                 </xpath>    -->
+            </field>
+        </record>
+    </data>
+</odoo>
